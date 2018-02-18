@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Hi {{ hero.name }}</h1>
+<div mat-dialog-content>
+  <p>My name is: {{ hero.name }}</p>
+  <label>New name?</label>
+  <input [(ngModel)]="data.name">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

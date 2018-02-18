@@ -1,0 +1,71 @@
+<h2>My Heroes</h2>
+
+<!--<ul class="heroes">-->
+  <!--<li *ngFor="let hero of heroes"-->
+    <!--[class.selected]="hero === selectedHero"-->
+    <!--(click)="onSelect(hero)">-->
+    <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
+  <!--</li>-->
+<!--</ul>-->
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let hero"> {{hero.name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="allHeroes.length"
+                 [pageIndex]="page"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[3, 5, 10]"
+                 [showFirstLastButtons]="true"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+
+
+<!--<ng2-md-datatable>-->
+  <!--<ng2-md-datatable-header>-->
+    <!--<ng2-md-datatable-column sortableValue="id">ID</ng2-md-datatable-column>-->
+    <!--<ng2-md-datatable-column sortableValue="name">Name</ng2-md-datatable-column>-->
+  <!--</ng2-md-datatable-header>-->
+  <!--<tbody>-->
+    <!--<ng2-md-datatable-row *ngFor="let hero of heroes" (click)="onSelect(hero)">-->
+      <!--<td>{{ hero.id }}</td>-->
+      <!--<td>{{ hero.name }}</td>-->
+    <!--</ng2-md-datatable-row>-->
+  <!--</tbody>-->
+<!--</ng2-md-datatable>-->
+<!--<ng2-md-datatable-pagination-->
+  <!--[currentPage]="1"-->
+  <!--[itemsPerPage]="5"-->
+  <!--[itemsCount]="allHeroes.length"-->
+  <!--[itemsPerPageChoices]="[3, 5, 10]"-->
+  <!--[itemsPerPageFirstChoice]="5"-->
+
+  <!--[needShowFirstArrow]="true"-->
+  <!--[needShowLastArrow]="true"-->
+  <!--ofText="de"-->
+  <!--rowsPerPageText="Filas por página:"-->
+  <!--(paginationChange)="onPageChange2($event)"-->
+<!--&gt;-->
+<!--</ng2-md-datatable-pagination>-->
+
+
+
+<!--<h3>HandsonTable Example</h3>-->
+<!--<hot-table height="200" width="200" [data]="heroes"></hot-table>-->
